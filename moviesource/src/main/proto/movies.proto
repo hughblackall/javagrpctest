@@ -1,0 +1,28 @@
+syntax = "proto3";
+
+// options for Java generated sources
+option java_multiple_files = true;
+option java_package = "com.moviesource.moviesource.model";
+option java_outer_classname = "MovieGrpcApi";
+
+package sms.core;
+
+message Movie {
+    string title = 1;
+    string genre = 2;
+    string director = 3;
+    string imageUrl = 4;
+}
+
+message NowShowingRequest {
+    int64 timestamp = 1;
+}
+
+message NowShowingResponse {
+    int64 timestamp = 1;
+    repeated Movie movies = 2;
+}
+
+service MovieService {
+    rpc getNowShowing (NowShowingRequest) returns (NowShowingResponse);
+}
